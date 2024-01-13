@@ -1,0 +1,91 @@
+// Your application logic
+const defaultProject = new Project('Default Project');
+const projects = [defaultProject];
+let currentProject = defaultProject;
+
+// Function to create a new ToDo using form input
+function createToDo() {
+    const title = document.getElementById('title').value;
+    const description = document.getElementById('description').value;
+    const dueDate = document.getElementById('dueDate').value;
+    const priority = document.getElementById('priority').value;
+    
+    const newToDo = new ToDo(title, description, dueDate, priority);
+    currentProject.todos.push(newToDo);
+
+    // Clear the form after creating a ToDo
+    document.getElementById('todoForm').reset();
+
+    renderToDoList();
+    updateLocalStorage();
+}
+
+
+// Function to render the ToDo list
+function renderToDoList() {
+    // Clear the previous content
+    document.getElementById('app').innerHTML = '';
+
+    // Render projects
+    projects.forEach(project => {
+        const projectDiv = document.createElement('div');
+        projectDiv.innerHTML = `<h2>${project.name}</h2>`;
+        
+        // Render todos within the project
+        project.todos.forEach(todo => {
+            const todoDiv = document.createElement('div');
+            todoDiv.innerHTML = `<h3>${todo.title}</h3>
+                                <p>Due Date: ${todo.dueDate}</p>
+                                <p>Priority: ${todo.priority}</p>
+                                <button onclick="expandToDo('${todo.title}')">Expand</button>
+                                <button onclick="deleteToDo('${todo.title}')">Delete</button>`;
+            projectDiv.appendChild(todoDiv);
+        
+        });
+
+        document.getElementById('app').appendChild(projectDiv);
+    });
+
+    const addTodoButton = document.createElement('button');
+    addTodoButton.innerText = 'Add ToDo';
+    addTodoButton.onclick = createToDo;
+    document.getElementById('app').appendChild(addTodoButton);
+}
+
+// Function to expand a single ToDo
+function expandToDo(title) {
+    const todo = currentProject.todos.find(todo => todo.title === title);
+    if (todo) {
+        // Implement your expand functionality here (e.g., show/edit details)
+        console.log(todo);
+    }
+}
+
+// Function to delete a ToDo
+function deleteToDo(title) {
+    const index = currentProject.todos.findIndex(todo => todo.title === title);
+    if (index !== -1) {
+        currentProject.todos.splice(index, 1);
+        renderToDoList();
+        updateLocalStorage();
+    }
+}
+
+// Function to update local storage with current project data
+function updateLocalStorage() {
+    localStorage.setItem('projects', JSON.stringify(projects));
+}
+
+// Function to load data from local storage on page load
+function loadFromLocalStorage() {
+    const storedProjects = JSON.parse(localStorage.getItem('projects'));
+    if (storedProjects) {
+        projects.length = 0; // Clear the projects array
+        projects.push(...storedProjects);
+        renderToDoList();
+    }
+}
+
+// Initialize the application
+loadFromLocalStorage();
+renderToDoList();
