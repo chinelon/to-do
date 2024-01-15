@@ -5,12 +5,79 @@ body{
     font-family: "Agbalumo";
 }
 
-#app {
+.container {
     max-width: 600px;
     margin: 20px auto;
     background-color: #fff;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     background-color: lightpink;
+}
+
+.app2{
+    margin-top: 20px;
+    display: flex;
+    gap: 350px;
+}
+.container2{
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    border-radius: 10px 10px 10px;
+    max-height: 650px;
+}
+
+
+#app{
     text-align: center;
+    margin-left: 230px;
+}
+
+#app h2{
+    display: flex;
+}
+
+#app h2 img{
+    width:40px; 
+    height:40px;
+    margin-left: 5px;
+}
+
+#tasks{
+    margin-left: 50px;
+
+}
+ul li{
+    list-style: none; 
+    font-size: 17px;
+    padding: 12px 8px 12px 50px;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+}
+
+ul li::before{
+    content: '';
+    position: absolute;
+    height: 28px;
+    width: 28px;
+    border-radius: 10%;
+    background-image: url(img/unchecked.png);
+    background-size: cover;
+    background-position: center;
+    top: 12px;
+    left: 8px;
+
+}
+
+ul li.checked{
+    color: #555;
+    text-decoration: line-through;
+}
+
+ul li.checked::before{
+    background-image: url(img/checked.png);
+
 }

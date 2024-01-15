@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,30 @@
     <link rel="stylesheet" href="styles.css">
     <title>todoit</title>
 </head>
+
 <body>
-    <div id="app"> To Do It!</div>
+    <div class="container">
+        <div id="app"> <h2>To Do It <img src="img/checklist.png" alt="checklist" ></h2> </div>
+        <div class="app2">
+            <div class="projects"> Projects </div>
+            <div> 
+                <input placeholder="title" id="task">
+                <button> + </button>
+            </div>
+
+        </div>
+    </div>
+    <div class="container2"> 
+        <h2 id="tasks">All Tasks</h2>
+        <ul id="list-container">
+            <!--<li class="checked">Task 1</li>
+            <li>Task 2</li>
+            <li>Task 3</li>>-->
+        </ul>
+    </div>
+
+
     <script src="app.js"> </script>
 </body>
+
 </html>
