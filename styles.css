@@ -1,4 +1,4 @@
-body{
+body {
     background-color: rgb(255, 234, 237);
     margin: 0;
     padding: 0;
@@ -12,14 +12,18 @@ body{
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     background-color: lightpink;
+    border-radius: 10px 10px 10px;
+
 }
 
-.app2{
+.app2 {
     margin-top: 20px;
     display: flex;
-    gap: 350px;
+    gap: 400px;
+    padding: 5px;
 }
-.container2{
+
+.container2 {
     max-width: 600px;
     margin: 20px auto;
     padding: 20px;
@@ -30,27 +34,73 @@ body{
 }
 
 
-#app{
+#app {
     text-align: center;
     margin-left: 230px;
 }
 
-#app h2{
+#app h2 {
     display: flex;
 }
 
-#app h2 img{
-    width:40px; 
-    height:40px;
+#app h2 img {
+    width: 40px;
+    height: 40px;
     margin-left: 5px;
 }
 
-#tasks{
+#projects {
+    margin-left: 50px;
+}
+
+#tasks {
     margin-left: 50px;
 
 }
-ul li{
-    list-style: none; 
+
+#create {
+    text-align: center;
+    align-items: center;
+    background-color: rgb(250, 99, 122);
+    border-radius: 20%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: none;
+    width: 30px;
+    height: 30px;
+}
+
+#todoForm {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    border-radius: 10px 10px 10px;
+    max-height: 650px;
+    display: flex;
+
+
+}
+
+input {
+    flex: 1;
+    background: #edeef0;
+    padding: 10px;
+    gap: 5px;
+    font-family: "Agbalumo";
+}
+
+select {
+    flex: 1;
+    background: #edeef0;
+    padding: 10px;
+    font-family: "Agbalumo";
+    border: none;
+    border-radius: 0%;
+}
+
+ul li {
+    list-style: none;
     font-size: 17px;
     padding: 12px 8px 12px 50px;
     user-select: none;
@@ -58,7 +108,7 @@ ul li{
     position: relative;
 }
 
-ul li::before{
+ul li::before {
     content: '';
     position: absolute;
     height: 28px;
@@ -72,17 +122,17 @@ ul li::before{
 
 }
 
-ul li.checked{
+ul li.checked {
     color: #555;
     text-decoration: line-through;
 }
 
-ul li.checked::before{
+ul li.checked::before {
     background-image: url(img/checked.png);
 
 }
 
-ul li span{
+ul li span {
     position: absolute;
     right: 0;
     top: 5px;
@@ -95,6 +145,6 @@ ul li span{
     border-radius: 20%;
 }
 
-ul li span:hover{
+ul li span:hover {
     background: #edeef0;
 }
