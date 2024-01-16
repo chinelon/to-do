@@ -1,43 +1,42 @@
-class ToDo {
-    constructor(task, description, dueDate, priority){
-        this.title = title
-        this.description = description
-        this.dueDate = dueDate
-        this.priority = priority
+const task = document.getElementById('task');
+const listContainer = document.getElementById('list-container');
+
+function addTask(){
+    if (task.value === ""){
+        alert('you must write something');
+    } 
+    else {
+        let li = document.createElement('li');
+        li.innerHTML = task.value;
+        listContainer.appendChild(li)
+
+        //adds the cross sign tothe end of the todo.
+        let span = document.createElement('span');
+        span.innerHTML = "\u00d7";
+        li.appendChild(span)
     }
+    //clears input field
+    task.value= "";
+    saveData()
 }
 
-class Project {
-    constructor(name){
-        this.name = name
-        this.todos = []
+listContainer.addEventListener("click", function(e){
+    if(e.target.tagName === "LI"){
+        e.target.classList.toggle("checked");
+        saveData()
     }
+    else if (e.target.tagName === "SPAN"){
+        e.target.parentElement.remove();
+        saveData()
+    }
+}, false);
+
+function saveData(){
+    localStorage.setItem("data", listContainer.innerHTML);
 }
 
-//functions
-function createToDo(){
-    
-}
-function renderToDoList() {
-    // Implement rendering logic
+function showTask(){
+    listContainer.innerHTML = localStorage.getItem("data")
 }
 
-function expandToDo(title) {
-    // Implement expand ToDo logic
-}
-
-function deleteToDo(title) {
-    // Implement delete ToDo logic
-}
-
-function updateLocalStorage() {
-    // Implement local storage update logic
-}
-
-function loadFromLocalStorage() {
-    // Implement loading data from local storage logic
-}
-
-// Initialize the application
-loadFromLocalStorage();
-renderToDoList();
+showTask()
